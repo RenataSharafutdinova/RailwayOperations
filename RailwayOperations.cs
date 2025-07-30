@@ -28,4 +28,14 @@ public class RailwayOperations
 
         return baseCost * overloadCoefficient;
     }
+    public int CalculateNetTravelTime(int totalTravelMinutes, int totalStopMinutes)
+    {
+        if (totalTravelMinutes < 0 || totalStopMinutes < 0)
+            throw new ArgumentException("Время не может быть отрицательным.");
+    
+        if (totalStopMinutes > totalTravelMinutes)
+            throw new ArgumentException("Время остановок не может превышать общее время в пути.");
+    
+        return totalTravelMinutes - totalStopMinutes;
+    }
 }
